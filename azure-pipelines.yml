@@ -23,7 +23,6 @@ steps:
     orchestratorConnection: 'Test Service Connection'
     processName: 'Azure_DevOps_Integration_Process'
     folderName: 'APAAR'
-    user: 'desktop-qu8utev\dell'
 
 - task: UiPathTest@2
   inputs:
@@ -44,3 +43,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'pipeline'
     publishLocation: 'Container'
+
