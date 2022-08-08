@@ -18,10 +18,22 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: UiPathRunJob@2
+- task: UiPathPack@2
   inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: '$(Build.SourcesDirectory)'
+    outputType: 'Process'
     orchestratorConnection: 'Test Service Connection'
-    processName: 'Azure_DevOps_Integration_Process'
+    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+
+- task: UiPathTest@2
+  inputs:
+    testTarget: 'TestProject'
+    orchestratorConnection: 'Test Service Connection'
     folderName: 'APAAR'
-    jobType: 'TestAutomation'
-    user: 'desktop-qu8utev\dell'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'pipeline'
+    publishLocation: 'Container'
