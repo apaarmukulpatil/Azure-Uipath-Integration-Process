@@ -18,12 +18,6 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: UiPathRunJob@2
-  inputs:
-    orchestratorConnection: 'Test Service Connection'
-    processName: 'Azure_DevOps_Integration_Process'
-    folderName: 'APAAR'
-
 - task: UiPathTest@2
   inputs:
     testTarget: 'TestProject'
