@@ -18,6 +18,12 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+- task: UiPathTest@2
+  inputs:
+    testTarget: 'TestProject'
+    orchestratorConnection: 'Test Service Connection'
+    folderName: 'APAAR'
+
 - task: UiPathPack@2
   inputs:
     versionType: 'AutoVersion'
@@ -25,12 +31,6 @@ steps:
     outputType: 'Process'
     orchestratorConnection: 'Test Service Connection'
     outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-
-- task: UiPathTest@2
-  inputs:
-    testTarget: 'TestProject'
-    orchestratorConnection: 'Test Service Connection'
-    folderName: 'APAAR'
 
 - task: PublishBuildArtifacts@1
   inputs:
