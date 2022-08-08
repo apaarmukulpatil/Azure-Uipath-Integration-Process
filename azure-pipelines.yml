@@ -28,7 +28,6 @@ steps:
   inputs:
     versionType: 'AutoVersion'
     projectJsonPath: '$(Build.SourcesDirectory)'
-    outputType: 'Process'
     orchestratorConnection: 'Test Service Connection'
     outputPath: '$(Build.ArtifactStagingDirectory)\Output'
 
@@ -37,4 +36,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'pipeline'
     publishLocation: 'Container'
-
